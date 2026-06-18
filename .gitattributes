@@ -1,0 +1,24 @@
+# Normalize line endings across platforms (text files stored as LF)
+* text=auto eol=lf
+
+# Windows scripts must stay CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Unix scripts / Gradle wrapper must stay LF (so macOS/Linux can run ./gradlew)
+*.sh    text eol=lf
+gradlew text eol=lf
+
+# Binary assets — never convert
+*.jar    binary
+*.bundle binary
+*.ttf    binary
+*.otf    binary
+*.woff   binary
+*.woff2  binary
+*.webp   binary
+*.jpg    binary
+*.jpeg   binary
+*.png    binary
+*.gif    binary
+*.ico    binary
