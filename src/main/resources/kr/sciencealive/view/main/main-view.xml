@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mainView xmlns="http://jmix.io/schema/flowui/main-view"
+          title="msg://MainView.title">
+    <actions>
+        <action id="logoutAction" type="logout" text="msg:///actions.logout.text"/>
+    </actions>
+    <appLayout>
+        <navigationBar>
+            <header id="header" classNames="jmix-main-view-header">
+                <drawerToggle id="drawerToggle"
+                              classNames="jmix-main-view-drawer-toggle"
+                              themeNames="contrast"
+                              ariaLabel="msg://drawerToggle.ariaLabel"/>
+                <h1 id="viewTitle" classNames="jmix-main-view-title"/>
+                <userMenu id="userMenu" themeNames="tertiary" classNames="ms-auto me-m">
+                    <items>
+                        <separator/>
+                        <actionItem id="logoutMenuItem" ref="logoutAction" themeNames="non-checkable"/>
+                    </items>
+                </userMenu>
+            </header>
+        </navigationBar>
+        <drawerLayout>
+            <section id="section" classNames="jmix-main-view-section">
+                <h2 id="applicationTitle" classNames="jmix-main-view-application-title">
+                    <anchor id="baseLink" href="."
+                            text="msg://applicationTitle.text"
+                            classNames="jmix-main-view-application-title-base-link"/>
+                </h2>
+                <nav id="navigation"
+                     classNames="jmix-main-view-navigation"
+                     ariaLabel="msg://navigation.ariaLabel">
+                    <listMenu id="menu"/>
+                </nav>
+                <vbox id="publicLinks" padding="false" spacing="false">
+                    <span text="공개 페이지" classNames="sa-side-label"/>
+                    <anchor href="/" text="홈" classNames="sa-side-link"/>
+                    <anchor href="/archive" text="행사 아카이브" classNames="sa-side-link"/>
+                    <anchor href="/award" text="PR어워드 갤러리" classNames="sa-side-link"/>
+                    <anchor href="/submit" text="제출하기" classNames="sa-side-link"/>
+                    <anchor href="/judge" text="심사 콘솔" classNames="sa-side-link"/>
+                </vbox>
+            </section>
+        </drawerLayout>
+    </appLayout>
+</mainView>

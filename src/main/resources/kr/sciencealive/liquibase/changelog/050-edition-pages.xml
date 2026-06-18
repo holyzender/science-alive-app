@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="edition-pages-1-schema" author="science-alive">
+        <addColumn tableName="SA_EDITION">
+            <column name="POSTER_IMAGE" type="varchar(255)"/>
+        </addColumn>
+
+        <createTable tableName="SA_TALK">
+            <column name="ID" type="${uuid.type}"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="VERSION" type="int"><constraints nullable="false"/></column>
+            <column name="EDITION_NO" type="int"/>
+            <column name="TITLE" type="varchar(500)"/>
+            <column name="SPEAKER_NAME" type="varchar(255)"/>
+            <column name="SPEAKER_ROLE" type="varchar(255)"/>
+            <column name="TIME_SLOT" type="varchar(64)"/>
+            <column name="SORT_ORDER" type="int"/>
+        </createTable>
+
+        <createTable tableName="SA_ARTICLE">
+            <column name="ID" type="${uuid.type}"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="VERSION" type="int"><constraints nullable="false"/></column>
+            <column name="EDITION_NO" type="int"/>
+            <column name="TITLE" type="varchar(500)"/>
+            <column name="PUBLISHER" type="varchar(255)"/>
+            <column name="PUBLISHED_DATE" type="varchar(32)"/>
+            <column name="URL" type="varchar(512)"/>
+            <column name="SORT_ORDER" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="edition-pages-2-posters" author="science-alive">
+        <update tableName="SA_EDITION"><column name="POSTER_IMAGE" value="linear-gradient(160deg,#0b1b3a,#0a0f1f)"/><where>EDITION_NO = 7</where></update>
+        <update tableName="SA_EDITION"><column name="POSTER_IMAGE" value="linear-gradient(160deg,#1a1030,#0c0a1a)"/><where>EDITION_NO = 6</where></update>
+        <update tableName="SA_EDITION"><column name="POSTER_IMAGE" value="linear-gradient(160deg,#0e2a24,#08130f)"/><where>EDITION_NO = 5</where></update>
+        <update tableName="SA_EDITION"><column name="POSTER_IMAGE" value="linear-gradient(160deg,#2a1a10,#140c07)"/><where>EDITION_NO = 4</where></update>
+    </changeSet>
+
+    <changeSet id="edition-pages-3-talks" author="science-alive">
+        <!-- Edition 7 -->
+        <insert tableName="SA_TALK"><column name="ID" value="c0000007-0000-0000-0000-000000000001"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="7"/><column name="TITLE" value="기조강연 — 과학으로 세상을 잇다"/><column name="SPEAKER_NAME" value="정가현"/><column name="SPEAKER_ROLE" value="데일리뉴스 과학데스크"/><column name="TIME_SLOT" value="Day 1 · 10:00"/><column name="SORT_ORDER" valueNumeric="1"/></insert>
+        <insert tableName="SA_TALK"><column name="ID" value="c0000007-0000-0000-0000-000000000002"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="7"/><column name="TITLE" value="양자컴퓨팅, 어디까지 왔나"/><column name="SPEAKER_NAME" value="이도현"/><column name="SPEAKER_ROLE" value="KAIST 물리학과 교수"/><column name="TIME_SLOT" value="Day 1 · 13:30"/><column name="SORT_ORDER" valueNumeric="2"/></insert>
+        <insert tableName="SA_TALK"><column name="ID" value="c0000007-0000-0000-0000-000000000003"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="7"/><column name="TITLE" value="연구가 기사가 되기까지"/><column name="SPEAKER_NAME" value="박서연"/><column name="SPEAKER_ROLE" value="생명연 커뮤니케이션팀장"/><column name="TIME_SLOT" value="Day 2 · 11:00"/><column name="SORT_ORDER" valueNumeric="3"/></insert>
+        <!-- Edition 6 -->
+        <insert tableName="SA_TALK"><column name="ID" value="c0000006-0000-0000-0000-000000000001"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="6"/><column name="TITLE" value="팬데믹 이후의 과학 신뢰"/><column name="SPEAKER_NAME" value="정가현"/><column name="SPEAKER_ROLE" value="데일리뉴스 과학데스크"/><column name="TIME_SLOT" value="Day 1 · 10:30"/><column name="SORT_ORDER" valueNumeric="1"/></insert>
+        <insert tableName="SA_TALK"><column name="ID" value="c0000006-0000-0000-0000-000000000002"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="6"/><column name="TITLE" value="기후 모델의 불확실성 읽기"/><column name="SPEAKER_NAME" value="이수진"/><column name="SPEAKER_ROLE" value="국립기상과학원 연구위원"/><column name="TIME_SLOT" value="Day 1 · 14:00"/><column name="SORT_ORDER" valueNumeric="2"/></insert>
+        <insert tableName="SA_TALK"><column name="ID" value="c0000006-0000-0000-0000-000000000003"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="6"/><column name="TITLE" value="허위정보 시대의 과학 보도"/><column name="SPEAKER_NAME" value="박서연"/><column name="SPEAKER_ROLE" value="생명연 커뮤니케이션팀장"/><column name="TIME_SLOT" value="Day 2 · 11:30"/><column name="SORT_ORDER" valueNumeric="3"/></insert>
+        <!-- Edition 5 -->
+        <insert tableName="SA_TALK"><column name="ID" value="c0000005-0000-0000-0000-000000000001"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="5"/><column name="TITLE" value="신뢰의 과학: 데이터와 윤리"/><column name="SPEAKER_NAME" value="김도영"/><column name="SPEAKER_ROLE" value="서울대 과학정책 교수"/><column name="TIME_SLOT" value="Day 1 · 10:00"/><column name="SORT_ORDER" valueNumeric="1"/></insert>
+        <insert tableName="SA_TALK"><column name="ID" value="c0000005-0000-0000-0000-000000000002"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="5"/><column name="TITLE" value="대중과학 글쓰기의 원칙"/><column name="SPEAKER_NAME" value="정가현"/><column name="SPEAKER_ROLE" value="데일리뉴스 과학데스크"/><column name="TIME_SLOT" value="Day 1 · 13:00"/><column name="SORT_ORDER" valueNumeric="2"/></insert>
+        <insert tableName="SA_TALK"><column name="ID" value="c0000005-0000-0000-0000-000000000003"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="5"/><column name="TITLE" value="연구기관의 PR 전략"/><column name="SPEAKER_NAME" value="한지민"/><column name="SPEAKER_ROLE" value="KIST 홍보실장"/><column name="TIME_SLOT" value="Day 2 · 10:30"/><column name="SORT_ORDER" valueNumeric="3"/></insert>
+        <!-- Edition 4 -->
+        <insert tableName="SA_TALK"><column name="ID" value="c0000004-0000-0000-0000-000000000001"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="4"/><column name="TITLE" value="데이터 시각화로 본 과학"/><column name="SPEAKER_NAME" value="이도현"/><column name="SPEAKER_ROLE" value="KAIST 물리학과 교수"/><column name="TIME_SLOT" value="10:00"/><column name="SORT_ORDER" valueNumeric="1"/></insert>
+        <insert tableName="SA_TALK"><column name="ID" value="c0000004-0000-0000-0000-000000000002"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="4"/><column name="TITLE" value="오픈데이터와 재현가능성"/><column name="SPEAKER_NAME" value="최민호"/><column name="SPEAKER_ROLE" value="데이터과학연구소 책임연구원"/><column name="TIME_SLOT" value="13:30"/><column name="SORT_ORDER" valueNumeric="2"/></insert>
+        <insert tableName="SA_TALK"><column name="ID" value="c0000004-0000-0000-0000-000000000003"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="4"/><column name="TITLE" value="숫자가 말하지 않는 것"/><column name="SPEAKER_NAME" value="박서연"/><column name="SPEAKER_ROLE" value="생명연 커뮤니케이션팀장"/><column name="TIME_SLOT" value="15:00"/><column name="SORT_ORDER" valueNumeric="3"/></insert>
+    </changeSet>
+
+    <changeSet id="edition-pages-4-articles" author="science-alive">
+        <insert tableName="SA_ARTICLE"><column name="ID" value="d0000007-0000-0000-0000-000000000001"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="7"/><column name="TITLE" value="사이언스얼라이브 2026, 코엑스서 5월 개막"/><column name="PUBLISHER" value="데일리뉴스"/><column name="PUBLISHED_DATE" value="2026.04.30"/><column name="URL" value="#"/><column name="SORT_ORDER" valueNumeric="1"/></insert>
+        <insert tableName="SA_ARTICLE"><column name="ID" value="d0000007-0000-0000-0000-000000000002"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="7"/><column name="TITLE" value="제7회 PR어워드 접수 시작… 연구기관 보도자료 공모"/><column name="PUBLISHER" value="사이언스타임즈"/><column name="PUBLISHED_DATE" value="2026.03.15"/><column name="URL" value="#"/><column name="SORT_ORDER" valueNumeric="2"/></insert>
+        <insert tableName="SA_ARTICLE"><column name="ID" value="d0000006-0000-0000-0000-000000000001"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="6"/><column name="TITLE" value="불확실성의 시대, 과학의 역할을 묻다"/><column name="PUBLISHER" value="데일리뉴스"/><column name="PUBLISHED_DATE" value="2025.05.16"/><column name="URL" value="#"/><column name="SORT_ORDER" valueNumeric="1"/></insert>
+        <insert tableName="SA_ARTICLE"><column name="ID" value="d0000006-0000-0000-0000-000000000002"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="6"/><column name="TITLE" value="PR어워드 대상에 천문연 ‘중력파’ 보도자료"/><column name="PUBLISHER" value="한겨레사이언스"/><column name="PUBLISHED_DATE" value="2025.05.20"/><column name="URL" value="#"/><column name="SORT_ORDER" valueNumeric="2"/></insert>
+        <insert tableName="SA_ARTICLE"><column name="ID" value="d0000005-0000-0000-0000-000000000001"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="5"/><column name="TITLE" value="신뢰받는 과학 커뮤니케이션 포럼 성료"/><column name="PUBLISHER" value="데일리뉴스"/><column name="PUBLISHED_DATE" value="2024.05.24"/><column name="URL" value="#"/><column name="SORT_ORDER" valueNumeric="1"/></insert>
+        <insert tableName="SA_ARTICLE"><column name="ID" value="d0000005-0000-0000-0000-000000000002"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="5"/><column name="TITLE" value="PR어워드 첫 수상작 발표… 순수·응용 부문 시상"/><column name="PUBLISHER" value="사이언스타임즈"/><column name="PUBLISHED_DATE" value="2024.05.25"/><column name="URL" value="#"/><column name="SORT_ORDER" valueNumeric="2"/></insert>
+        <insert tableName="SA_ARTICLE"><column name="ID" value="d0000004-0000-0000-0000-000000000001"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="4"/><column name="TITLE" value="‘데이터로 말하는 과학’ 세종서 열려"/><column name="PUBLISHER" value="데일리뉴스"/><column name="PUBLISHED_DATE" value="2023.05.18"/><column name="URL" value="#"/><column name="SORT_ORDER" valueNumeric="1"/></insert>
+        <insert tableName="SA_ARTICLE"><column name="ID" value="d0000004-0000-0000-0000-000000000002"/><column name="VERSION" valueNumeric="1"/><column name="EDITION_NO" valueNumeric="4"/><column name="TITLE" value="과학기사 데이터 활용 사례 공유"/><column name="PUBLISHER" value="전자신문"/><column name="PUBLISHED_DATE" value="2023.05.19"/><column name="URL" value="#"/><column name="SORT_ORDER" valueNumeric="2"/></insert>
+    </changeSet>
+
+</databaseChangeLog>

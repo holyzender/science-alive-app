@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Press images via bundled CSS classes (survive Vaadin production bundling).
+         The earlier /VAADIN/themes/... runtime path only resolved in dev mode. -->
+
+    <changeSet id="media-class-1-schema" author="science-alive">
+        <addColumn tableName="SA_SUBMISSION">
+            <column name="MEDIA_CLASS" type="varchar(64)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="media-class-2-data" author="science-alive">
+        <update tableName="SA_SUBMISSION">
+            <column name="MEDIA_CLASS" value="sa-media--mrna"/>
+            <column name="IMAGE_GRADIENT" value="linear-gradient(135deg,#3a1f10,#1a0e06)"/>
+            <where>CODE = 'PRA-0131'</where>
+        </update>
+        <update tableName="SA_SUBMISSION">
+            <column name="MEDIA_CLASS" value="sa-media--battery"/>
+            <column name="IMAGE_GRADIENT" value="linear-gradient(135deg,#13311f,#0c1a12)"/>
+            <where>CODE = 'PRA-0138'</where>
+        </update>
+        <update tableName="SA_SUBMISSION">
+            <column name="MEDIA_CLASS" value="sa-media--gravity"/>
+            <column name="IMAGE_GRADIENT" value="linear-gradient(135deg,#1b2a4a,#0e1422)"/>
+            <where>CODE = 'PRA-0142'</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

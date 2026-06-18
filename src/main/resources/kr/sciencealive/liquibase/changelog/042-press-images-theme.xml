@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Serve press images from the Vaadin theme (served at /VAADIN/themes/<theme>/...),
+         the same reliable location as the hero image. META-INF/resources is shadowed by
+         Vaadin's catch-all servlet, so those paths returned the SPA shell instead of the image. -->
+
+    <changeSet id="press-images-theme-1" author="science-alive">
+        <update tableName="SA_SUBMISSION">
+            <column name="IMAGE_GRADIENT" value="url('/VAADIN/themes/science-alive/images/mrna.jpg') center / cover no-repeat"/>
+            <where>CODE = 'PRA-0131'</where>
+        </update>
+        <update tableName="SA_SUBMISSION">
+            <column name="IMAGE_GRADIENT" value="url('/VAADIN/themes/science-alive/images/battery.jpg') center / cover no-repeat"/>
+            <where>CODE = 'PRA-0138'</where>
+        </update>
+        <update tableName="SA_SUBMISSION">
+            <column name="IMAGE_GRADIENT" value="url('/VAADIN/themes/science-alive/images/gravity.jpg') center / cover no-repeat"/>
+            <where>CODE = 'PRA-0142'</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

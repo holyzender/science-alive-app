@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Use JPG press images (reliable browser decoding) for the headline submissions. -->
+
+    <changeSet id="press-images-jpg-1" author="science-alive">
+        <update tableName="SA_SUBMISSION">
+            <column name="IMAGE_GRADIENT" value="url('/press/mrna.jpg') center / cover no-repeat"/>
+            <where>CODE = 'PRA-0131'</where>
+        </update>
+        <update tableName="SA_SUBMISSION">
+            <column name="IMAGE_GRADIENT" value="url('/press/battery.jpg') center / cover no-repeat"/>
+            <where>CODE = 'PRA-0138'</where>
+        </update>
+        <update tableName="SA_SUBMISSION">
+            <column name="IMAGE_GRADIENT" value="url('/press/gravity.jpg') center / cover no-repeat"/>
+            <where>CODE = 'PRA-0142'</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

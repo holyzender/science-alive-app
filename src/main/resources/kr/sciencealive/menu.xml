@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
+    <menu id="security" title="보안" icon="KEY">
+        <item view="sec_ResourceRoleModel.list" title="리소스 역할"/>
+        <item view="sec_RowLevelRoleModel.list" title="행 수준 역할"/>
+    </menu>
+    <menu id="datatools" title="데이터 도구" icon="DATABASE">
+        <item view="datatl_entityInspectorListView" title="엔티티 인스펙터"/>
+    </menu>
+</menu-config>

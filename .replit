@@ -1,0 +1,26 @@
+# Replit config for the Science Alive Jmix app (Spring Boot + Vaadin Flow).
+# This file must live at the REPL ROOT (same level as build.gradle).
+
+# "Run" button (dev preview while the editor is open):
+# builds the production jar if it's missing, then launches it.
+run = "test -f build/libs/science-alive-0.0.1-SNAPSHOT.jar || sh gradlew clean bootJar -Pvaadin.productionMode=true; java -Xmx1g -jar build/libs/science-alive-0.0.1-SNAPSHOT.jar --server.port=8080"
+entrypoint = "build.gradle"
+
+[nix]
+# If Nix complains this channel is unknown, change it to one your Replit offers.
+channel = "stable-24_05"
+
+# --- Deployment ---------------------------------------------------------
+# Use a RESERVED VM, not Autoscale:
+#   * Vaadin keeps server-side UI state -> it must run as a single instance
+#     (autoscale load-balances across instances and breaks the session).
+#   * Reserved VM has a persistent disk -> the HSQLDB file (.jmix/hsqldb)
+#     survives restarts, so submitted forms are not lost.
+[deployment]
+deploymentTarget = "gce"
+build = ["sh", "-c", "sh gradlew clean bootJar -Pvaadin.productionMode=true"]
+run = ["sh", "-c", "java -Xmx1g -jar build/libs/science-alive-0.0.1-SNAPSHOT.jar --server.port=8080"]
+
+[[ports]]
+localPort = 8080
+externalPort = 80

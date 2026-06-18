@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Demo users for the four user types (admin is created in 010-init-user). -->
+
+    <changeSet id="users-1-judge" author="science-alive">
+        <insert tableName="SA_USER">
+            <column name="ID" value="b0000000-0000-0000-0000-000000000010"/>
+            <column name="VERSION" valueNumeric="1"/>
+            <column name="USERNAME" value="judge"/>
+            <column name="PASSWORD" value="{noop}judge"/>
+            <column name="LAST_NAME" value="이"/>
+            <column name="FIRST_NAME" value="도현"/>
+            <column name="INSTITUTION" value="KAIST 신소재공학과"/>
+            <column name="EMAIL" value="judge@sciencealive.kr"/>
+            <column name="ACTIVE" valueBoolean="true"/>
+        </insert>
+        <insert tableName="SEC_ROLE_ASSIGNMENT">
+            <column name="ID" value="b1000000-0000-0000-0000-000000000011"/>
+            <column name="VERSION" valueNumeric="1"/>
+            <column name="USERNAME" value="judge"/>
+            <column name="ROLE_CODE" value="judge-role"/>
+            <column name="ROLE_TYPE" value="resource"/>
+        </insert>
+        <insert tableName="SEC_ROLE_ASSIGNMENT">
+            <column name="ID" value="b1000000-0000-0000-0000-000000000012"/>
+            <column name="VERSION" valueNumeric="1"/>
+            <column name="USERNAME" value="judge"/>
+            <column name="ROLE_CODE" value="ui-minimal"/>
+            <column name="ROLE_TYPE" value="resource"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="users-2-submitter" author="science-alive">
+        <insert tableName="SA_USER">
+            <column name="ID" value="b0000000-0000-0000-0000-000000000020"/>
+            <column name="VERSION" valueNumeric="1"/>
+            <column name="USERNAME" value="submitter"/>
+            <column name="PASSWORD" value="{noop}submitter"/>
+            <column name="LAST_NAME" value="박"/>
+            <column name="FIRST_NAME" value="서연"/>
+            <column name="INSTITUTION" value="한국생명공학연구원"/>
+            <column name="EMAIL" value="submitter@sciencealive.kr"/>
+            <column name="ACTIVE" valueBoolean="true"/>
+        </insert>
+        <insert tableName="SEC_ROLE_ASSIGNMENT">
+            <column name="ID" value="b1000000-0000-0000-0000-000000000021"/>
+            <column name="VERSION" valueNumeric="1"/>
+            <column name="USERNAME" value="submitter"/>
+            <column name="ROLE_CODE" value="submitter-role"/>
+            <column name="ROLE_TYPE" value="resource"/>
+        </insert>
+        <insert tableName="SEC_ROLE_ASSIGNMENT">
+            <column name="ID" value="b1000000-0000-0000-0000-000000000022"/>
+            <column name="VERSION" valueNumeric="1"/>
+            <column name="USERNAME" value="submitter"/>
+            <column name="ROLE_CODE" value="ui-minimal"/>
+            <column name="ROLE_TYPE" value="resource"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

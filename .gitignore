@@ -1,0 +1,27 @@
+# Gradle
+.gradle/
+build/
+
+# Jmix / runtime
+.jmix/
+*.log
+*.pid
+
+# Vaadin frontend
+node_modules/
+src/main/frontend/generated/
+src/main/bundles/
+package.json
+package-lock.json
+pnpm-lock.yaml
+vite.generated.ts
+types.d.ts
+tsconfig.json
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Replit deploy staging (large prebuilt jars / zips — must not go to GitHub)
+deploy-replit/

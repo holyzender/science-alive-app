@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="data-1" author="science-alive">
+        <createTable tableName="SA_EDITION">
+            <column name="ID" type="${uuid.type}"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="VERSION" type="int"><constraints nullable="false"/></column>
+            <column name="EDITION_NO" type="int"/>
+            <column name="YEAR_" type="int"/>
+            <column name="THEME" type="varchar(255)"/>
+            <column name="EVENT_DATE" type="varchar(64)"/>
+            <column name="VENUE" type="varchar(255)"/>
+            <column name="TALKS" type="int"/>
+            <column name="STATUS" type="varchar(32)"/>
+        </createTable>
+
+        <createTable tableName="SA_SPEAKER">
+            <column name="ID" type="${uuid.type}"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="VERSION" type="int"><constraints nullable="false"/></column>
+            <column name="NAME" type="varchar(255)"/>
+            <column name="ROLE_" type="varchar(255)"/>
+            <column name="TOPIC" type="varchar(500)"/>
+            <column name="SORT_ORDER" type="int"/>
+        </createTable>
+
+        <createTable tableName="SA_SUBMISSION">
+            <column name="ID" type="${uuid.type}"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="VERSION" type="int"><constraints nullable="false"/></column>
+            <column name="CODE" type="varchar(32)"/>
+            <column name="TITLE" type="varchar(500)"/>
+            <column name="ORG" type="varchar(255)"/>
+            <column name="DIVISION" type="varchar(32)"/>
+            <column name="EDITION_NO" type="int"/>
+            <column name="AWARD" type="varchar(32)"/>
+            <column name="VIEWS" type="int"/>
+            <column name="IMAGE_GRADIENT" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="data-2-editions" author="science-alive">
+        <insert tableName="SA_EDITION">
+            <column name="ID" value="a1000001-0000-0000-0000-000000000007"/><column name="VERSION" valueNumeric="1"/>
+            <column name="EDITION_NO" valueNumeric="7"/><column name="YEAR_" valueNumeric="2026"/>
+            <column name="THEME" value="과학으로 세상을 잇다"/><column name="EVENT_DATE" value="2026.05.21–22"/>
+            <column name="VENUE" value="코엑스 그랜드볼룸, 서울"/><column name="TALKS" valueNumeric="24"/><column name="STATUS" value="예정"/>
+        </insert>
+        <insert tableName="SA_EDITION">
+            <column name="ID" value="a1000001-0000-0000-0000-000000000006"/><column name="VERSION" valueNumeric="1"/>
+            <column name="EDITION_NO" valueNumeric="6"/><column name="YEAR_" valueNumeric="2025"/>
+            <column name="THEME" value="불확실성의 시대, 과학의 역할"/><column name="EVENT_DATE" value="2025.05.15–16"/>
+            <column name="VENUE" value="동대문디자인플라자"/><column name="TALKS" valueNumeric="22"/><column name="STATUS" value="종료"/>
+        </insert>
+        <insert tableName="SA_EDITION">
+            <column name="ID" value="a1000001-0000-0000-0000-000000000005"/><column name="VERSION" valueNumeric="1"/>
+            <column name="EDITION_NO" valueNumeric="5"/><column name="YEAR_" valueNumeric="2024"/>
+            <column name="THEME" value="신뢰받는 과학 커뮤니케이션"/><column name="EVENT_DATE" value="2024.05.23–24"/>
+            <column name="VENUE" value="노들섬 다목적홀"/><column name="TALKS" valueNumeric="19"/><column name="STATUS" value="종료"/>
+        </insert>
+        <insert tableName="SA_EDITION">
+            <column name="ID" value="a1000001-0000-0000-0000-000000000004"/><column name="VERSION" valueNumeric="1"/>
+            <column name="EDITION_NO" valueNumeric="4"/><column name="YEAR_" valueNumeric="2023"/>
+            <column name="THEME" value="데이터로 말하는 과학"/><column name="EVENT_DATE" value="2023.05.18"/>
+            <column name="VENUE" value="세종대로 스페이스"/><column name="TALKS" valueNumeric="16"/><column name="STATUS" value="종료"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="data-3-speakers" author="science-alive">
+        <insert tableName="SA_SPEAKER">
+            <column name="ID" value="a2000002-0000-0000-0000-000000000001"/><column name="VERSION" valueNumeric="1"/>
+            <column name="NAME" value="정가현"/><column name="ROLE_" value="데일리뉴스 과학데스크"/>
+            <column name="TOPIC" value="뉴스룸이 과학을 다루는 법"/><column name="SORT_ORDER" valueNumeric="1"/>
+        </insert>
+        <insert tableName="SA_SPEAKER">
+            <column name="ID" value="a2000002-0000-0000-0000-000000000002"/><column name="VERSION" valueNumeric="1"/>
+            <column name="NAME" value="이도현"/><column name="ROLE_" value="KAIST 물리학과 교수"/>
+            <column name="TOPIC" value="양자컴퓨팅, 어디까지 왔나"/><column name="SORT_ORDER" valueNumeric="2"/>
+        </insert>
+        <insert tableName="SA_SPEAKER">
+            <column name="ID" value="a2000002-0000-0000-0000-000000000003"/><column name="VERSION" valueNumeric="1"/>
+            <column name="NAME" value="박서연"/><column name="ROLE_" value="생명연 커뮤니케이션팀장"/>
+            <column name="TOPIC" value="연구가 기사가 되기까지"/><column name="SORT_ORDER" valueNumeric="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="data-4-submissions" author="science-alive">
+        <insert tableName="SA_SUBMISSION">
+            <column name="ID" value="a3000003-0000-0000-0000-000000000142"/><column name="VERSION" valueNumeric="1"/>
+            <column name="CODE" value="PRA-0142"/><column name="TITLE" value="중력파로 본 우주의 첫 순간"/>
+            <column name="ORG" value="한국천문연구원"/><column name="DIVISION" value="basic"/><column name="EDITION_NO" valueNumeric="7"/>
+            <column name="AWARD" value="gold"/><column name="VIEWS" valueNumeric="3120"/>
+            <column name="IMAGE_GRADIENT" value="linear-gradient(135deg,#1b2a4a,#0e1422)"/>
+        </insert>
+        <insert tableName="SA_SUBMISSION">
+            <column name="ID" value="a3000003-0000-0000-0000-000000000138"/><column name="VERSION" valueNumeric="1"/>
+            <column name="CODE" value="PRA-0138"/><column name="TITLE" value="차세대 전고체 배터리 상용화 로드맵"/>
+            <column name="ORG" value="KAIST 신소재공학과"/><column name="DIVISION" value="applied"/><column name="EDITION_NO" valueNumeric="7"/>
+            <column name="AWARD" value="silver"/><column name="VIEWS" valueNumeric="2740"/>
+            <column name="IMAGE_GRADIENT" value="linear-gradient(135deg,#13311f,#0c1a12)"/>
+        </insert>
+        <insert tableName="SA_SUBMISSION">
+            <column name="ID" value="a3000003-0000-0000-0000-000000000131"/><column name="VERSION" valueNumeric="1"/>
+            <column name="CODE" value="PRA-0131"/><column name="TITLE" value="mRNA 플랫폼으로 만드는 범용 백신"/>
+            <column name="ORG" value="한국생명공학연구원"/><column name="DIVISION" value="applied"/><column name="EDITION_NO" valueNumeric="7"/>
+            <column name="AWARD" value="gold"/><column name="VIEWS" valueNumeric="4010"/>
+            <column name="IMAGE_GRADIENT" value="linear-gradient(135deg,#3a1f10,#1a0e06)"/>
+        </insert>
+        <insert tableName="SA_SUBMISSION">
+            <column name="ID" value="a3000003-0000-0000-0000-000000000127"/><column name="VERSION" valueNumeric="1"/>
+            <column name="CODE" value="PRA-0127"/><column name="TITLE" value="초전도체 검증, 무엇이 쟁점인가"/>
+            <column name="ORG" value="포항공과대학교"/><column name="DIVISION" value="basic"/><column name="EDITION_NO" valueNumeric="7"/>
+            <column name="VIEWS" valueNumeric="1980"/>
+            <column name="IMAGE_GRADIENT" value="linear-gradient(135deg,#241a3a,#120c1f)"/>
+        </insert>
+        <insert tableName="SA_SUBMISSION">
+            <column name="ID" value="a3000003-0000-0000-0000-000000000119"/><column name="VERSION" valueNumeric="1"/>
+            <column name="CODE" value="PRA-0119"/><column name="TITLE" value="도시 폭염을 읽는 기후 디지털트윈"/>
+            <column name="ORG" value="한국과학기술연구원"/><column name="DIVISION" value="applied"/><column name="EDITION_NO" valueNumeric="6"/>
+            <column name="AWARD" value="bronze"/><column name="VIEWS" valueNumeric="1540"/>
+            <column name="IMAGE_GRADIENT" value="linear-gradient(135deg,#0e2a30,#08171a)"/>
+        </insert>
+        <insert tableName="SA_SUBMISSION">
+            <column name="ID" value="a3000003-0000-0000-0000-000000000112"/><column name="VERSION" valueNumeric="1"/>
+            <column name="CODE" value="PRA-0112"/><column name="TITLE" value="미세플라스틱의 인체 이동 경로 추적"/>
+            <column name="ORG" value="안전성평가연구소"/><column name="DIVISION" value="basic"/><column name="EDITION_NO" valueNumeric="6"/>
+            <column name="VIEWS" valueNumeric="1220"/>
+            <column name="IMAGE_GRADIENT" value="linear-gradient(135deg,#2a2410,#16130a)"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
