@@ -15,8 +15,10 @@ group = 'kr.sciencealive'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    // Target 17 (not 21) so the jar runs on Replit's Java 19 runtime.
+    // Build JDK may be newer; this only sets the emitted class-file version (61).
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
